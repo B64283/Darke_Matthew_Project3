@@ -1,0 +1,65 @@
+/* Matthew Darke
+   VFW Project 2
+   1306 style.css
+*/
+
+
+h1 {
+	margin: 10px;
+	padding: 20px;
+	font-size: 24;
+	text-align: center;
+	color:rgba(34,10,150,1);
+	background-image:-webkit-linear-gradient(#3e5cd6 0%, #f0edf1 100%) ;
+	text-shadow: 2px 4px 6px #2557c1	
+}
+legend {
+	font-size: 40;
+	letter-spacing: .0en;
+	color: #0b0585;
+	font-weight: bold;
+    border: bold;
+}
+body {
+	background-image: -webkit-linear-gradient(#7e7c7c 0%, #4f768c 56.62%)
+}
+h2,h3 {
+	font-family: sans-serif;
+	font-size: 12px;
+	line-height: normal;
+	text-indent: 1px;
+	color: #fafafa
+}
+li {
+	color: rgba(0,0,0,1);
+	font-size: 18px;
+	letter-spacing: normal
+	
+}
+input[type="submit"] {
+	padding: 46px 0px 0px 0px;
+	text-fill-color: inherit;
+	background:rgba(12,229,113,0.99);
+	
+}	
+label {
+	color: rgba(0,0,0,1);
+	font-family: sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+    text-align: left	
+}	
+fieldset {
+	background-color:rgba(130,156,175,1);
+	border-color: #1505a0
+	}	
+	
+input[type="checkbox"] {
+	 width: !important;
+	 background-color: #1b0a8b
+}	
+
+	
+	
+	
+	

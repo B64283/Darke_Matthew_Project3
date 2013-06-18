@@ -1,0 +1,68 @@
+<!doctype html>
+<!--Matthew Darke--> 
+<!-- VFW Project2 1306 -->
+<!--additem form-->
+<html>
+    <head>
+		<meta charset="utf-8" /> 
+		<meta name="description" content="Vacation to do list app" />
+		<meta name="keywords" content="Vacation Planner" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="HandheldFriendly" content="true" />		
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<link href="css/style.css" rel="stylesheet" />		<!meta name="viewport" content="target-densitydpi=device-dpi" />
+		<!--meta name="mobileoptimized" content="320" /-->
+		<title>to do form</title>
+    </head>
+    <body>
+   		<H1>Vacation Planner</H1>
+   		<form action="#" method="post" id= "vacationForm" /> <!-- post submits data behind the scenes -->
+            <a href="#" id="clear">Clear Data</a>   <a href="#" id="Display">Display Data</a> 
+   	               <a href="index.html" id="addNew" style="display:none;">Add New Vacation</a>   
+            <fieldset>
+        	    <legend>Vacation Items</legend>
+        	    <ul>
+        	        <li><label for="Iname">Item name:</label><input type="text" id="Iname" placeholder="Extra Socks" /></li>
+        	    </ul>   
+             
+             	<ul>
+             	<legend>Check List:</legend>
+             		<li><label for="Clothes">Clothes</label><input type= "checkbox"  value="Clothes" id="Clothes"  /></li>   
+                    <li><label for="Medication">Medication</label><input type= "checkbox"  value="Medication" id="Medication" /></li>
+                    <li><label for="Toileteries">Toiletries</label><input type= "checkbox"  value="Toileteries" id="Toiletries"  /></li>                    
+                </ul>
+             </fieldset>                          
+             <fieldset>                   
+                 <legend>Budget Planner</legend>
+                     <label for="budgetplan">Budget scale:</label><input type="range" min="100" max="10000" id="budgetplan" name="rating" type="range">
+              </fieldset>
+   	          <fieldset>
+   	              <legend>Set Date</legend>
+   	                  <label for="startdate">Vacation starts on:</label>
+                      <input type="date" min="1904-03-17" max="1904-05-17" id="startdate" name="startdate" required aria-required="true"placeholder="1911-03-17"> 
+   	              
+                      <label for="climate">Type of climate</label>
+                      <select id="climates">
+                          <optgroup label="climate">
+                          <ul>
+                              <li><option value="Hot">Hot</option></li>
+                              <li><option value="Raining">Raining</option></li>                 	   
+   	                          <li><option value="Cold">Cold</option></li>
+                          </ul>   	   
+   	                      </optgroup>
+                      </select>
+   	                   
+   	               <ul>    
+   	              <li><label for="notes">extra thoughts!</label><textarea id="notes"></textarea></li>
+   	              <li><input type="hidden" value="true" /></li>
+   	               </ul>
+   	            </fieldset>       
+   	          <input type="submit" value="complete checklist" id="submit" /><br />
+   	                         	   
+   	     </form>
+         <script src="js/main.js" type="text/javaScript"></script>        
+   </body>
+</html>
+         
+
+         
