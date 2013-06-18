@@ -33,19 +33,19 @@ window.addEventListener("DOMContentLoaded", function() {
    
    function getClothesvalue(){
 	   if ($("Clothes").checked){
-		   Clothesvalue = ("Clothes").value;
+		   Clothesvalue = $("Clothes").value;
 	   } else { Clothesvalue = "none";	    
 	   };
    };
    function getMedicationvalue(){
 	   if ($("Medication").checked){
-		   Medicationvalue = ("Medication").value;
+		   Medicationvalue = $("Medication").value;
 	   } else { Medicationvalue = "none";	    
 	   };
    };
    function getToiletriesvalue(){
 	   if ($("Toiletries").checked){
-		   Toiletriesvalue = ("Toiletries").value;
+		   Toiletriesvalue = $("Toiletries").value;
 	   } else { Toiletriesvalue = "none";	    
 	   };
    };
@@ -77,9 +77,9 @@ window.addEventListener("DOMContentLoaded", function() {
         getToiletriesvalue()
 	    var item			    = {}; 
 	        item.name          =["Item name:", $( "Iname" ).value];
-	        item.checkList       =["checkbox Clothes:", Clothes.value];
-	        item.checkList       =["checkbox Medication:", Medication.value];
-	        item.checkList       =["checkbox Toiletries:", Toiletries.value];	        
+	        item.clothes       =["checkbox Clothes:", Clothesvalue];
+	        item.meds       =["checkbox Medication:", Medicationvalue];
+	        item.toiletries       =["checkbox Toiletries:", Toiletriesvalue];	        
 	        item.Budget         =["Budget scale:" , $("budgetplan").value];
 	        item.date           =["Vacation starts on:", $("startdate").value];	        
 	        item.climateTyp     =["Type of climate:", $("climates").value];
@@ -109,7 +109,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		    	var makeSubLi = document.createElement("li");
 		    	makeSubList.appendChild(makeSubLi);
 		    	var optSubText = obj[n][0]+" "+obj[n][1];
-		    	makeSubList.innerHTML = optSubText; 
+		    	makeSubLi.innerHTML = optSubText; 
 		   } 
 	    }
     }
