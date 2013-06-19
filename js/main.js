@@ -1,6 +1,6 @@
 //alert("javaScript works");
 // Matthew Darke
-//VFW 1306 Project2
+//VFW 1306 Project3
 
 // waits untill DOM is ready
 window.addEventListener("DOMContentLoaded", function() {
@@ -75,12 +75,12 @@ window.addEventListener("DOMContentLoaded", function() {
         getClothesvalue();
         getMedicationvalue();
         getToiletriesvalue()
-	    var item			    = {}; 
-	        item.name          =["Item name:", $( "Iname" ).value];
+	    var item			  = {}; 
+	        item.name         =["Item name:", $( "Iname" ).value];
 	        item.clothes       =["checkbox Clothes:", Clothesvalue];
-	        item.meds       =["checkbox Medication:", Medicationvalue];
-	        item.toiletries       =["checkbox Toiletries:", Toiletriesvalue];	        
-	        item.Budget         =["Budget scale:" , $("budgetplan").value];
+	        item.meds         =["checkbox Medication:", Medicationvalue];
+	        item.toiletries      =["checkbox Toiletries:", Toiletriesvalue];	        
+	        item.Budget        =["Budget scale:" , $("budgetplan").value];
 	        item.date           =["Vacation starts on:", $("startdate").value];	        
 	        item.climateTyp     =["Type of climate:", $("climates").value];
 	        item.extraNotes     =["extra thoughts!:", $("notes").value];
@@ -99,9 +99,11 @@ window.addEventListener("DOMContentLoaded", function() {
     	$("items").style.display = "inline";    	
     	for(var i=0, len=localStorage.length; i<len; i++){
 	    	var makeli = document.createElement("li");
+	    	var linksLi = document.createElement("li");
 	    	makeList.appendChild(makeli);
 	    	var key = localStorage.key(i);
 	    	var value = localStorage.getItem(key);
+	    	// convert the string from local storage value back to an object using JSON.parse()
 	    	var obj = JSON.parse(value);
 	    	var makeSubList = document.createElement("ul");
 	    	makeli.appendChild(makeSubList);
@@ -110,9 +112,45 @@ window.addEventListener("DOMContentLoaded", function() {
 		    	makeSubList.appendChild(makeSubLi);
 		    	var optSubText = obj[n][0]+" "+obj[n][1];
 		    	makeSubLi.innerHTML = optSubText; 
+		    	makeSubList.appendChild(linksLi);
 		   } 
+		   makeItemLinks(localStorage.key(i), linksLi);     // create edit and delete buttons / link for each ltem in local storage
 	    }
     }
+    //make item links function
+    //create the edit and delete links for each stored item when displayed
+    function makeItemLinks(key, linksLi){
+	    //add edit single item link 
+	    var editLink = document.createElement("a");
+	    editLink.href = "#";
+	    editLink.key = key;
+	    var editText = "Edit Vacation";
+	    //editLink.addEventListener("click", editItem);
+	    editLink.innerHTML = editText;
+	    linksLi.appendChild(editLink);
+	    
+	    //add line break
+	    var breakTag = document.createElement("br");
+	    linksLI.appendChild(breakTag);
+	    
+	     //add a delete single item link
+	    var deleteLink = document.createElement("a");
+	    deleteLink.href = "#";
+	    deleteLink.key = key;
+	    var deleteText = "Delete Vacation";
+	    //deleteLink.addEventListener("click", deleteItem);
+	    deleteLink.innerHTML = deleteText;
+	    linksLi.appendChild(deleteLink);
+	    
+	    
+	    
+	    
+	    
+	    
+	 
+    }
+    
+    
     function clearLocal(){
 	    if (localStorage.length === 0){
 		    alert("No Data To Clear.");
