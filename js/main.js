@@ -125,11 +125,11 @@ window.addEventListener("DOMContentLoaded", function() {
 	    editLink.href = "#";
 	    editLink.key = key;
 	    var editText = "Edit Vacation";
-	    //editLink.addEventListener("click", editItem);
+	    editLink.addEventListener("click", editItem);
 	    editLink.innerHTML = editText;
 	    linksLi.appendChild(editLink);
 	    
-	    //add line break not working
+	    //add line break 
 	    var breakTag = document.createElement("br");
 	    linksLi.appendChild(breakTag);
 	    
@@ -141,13 +141,41 @@ window.addEventListener("DOMContentLoaded", function() {
 	    //deleteLink.addEventListener("click", deleteItem);
 	    deleteLink.innerHTML = deleteText;
 	    linksLi.appendChild(deleteLink);
+    }
+    function editItem(){
+	    //grab data from item from local storage
+	    var value = localStorage.getItem(this.key);
+	    var item = JSON.parse(value);
+	    //show the form
+	    toggleControls("off");
 	    
-	    
-	    
-	    
-	    
-	    
-	 
+	    //populate the form fields with current local storage values
+	    $("Iname").value = item.name[1];
+	    if (item.clothes[1] == "Clothes"); {
+	        $("Clothes").setAttribute("checked", "checked");
+		}
+	    if (item.meds[1] == "Medication"); {
+	        $("Medication").setAttribute("checked", "checked");
+		}
+	    if (item.toiletries[1] == "Toiletries"); {
+	        $("Toiletries").setAttribute("checked", "checked");
+		}
+	    $("budgetplan").value = item.Budget[1];
+	    $("startdate").value = item.date[1];
+	    $("climates").value = item.climateTyp[1];
+	    $("notes").value = item.extraNotes[1];
+    
+        //remove the initial listener from the input "save contact" button.
+        completeChecklist.removeEventListener("click", storeData);
+        //change the submitt button value to edit button
+        $("submit").value = "Edit Vacation";
+        var editSubmit = $("submit");
+        //Save the key value established in this function as a properity of the editSubmit event
+        // so we can use that value again when we save the data we edited
+        editSubmit.addEventListener("click", validate);
+        editSubmit.key = this.key;
+    
+    
     }
     
     
@@ -161,12 +189,38 @@ window.addEventListener("DOMContentLoaded", function() {
 	        return false;
 	   }
  }
+     function validate(e){
+	     //define elemints we want to check
+	     var getIname = $("Iname");	     
+         //get error messages
+         var messageAry = [];
+          //name validation   
+         if (getIname.value === " "){
+	         var InameError = "Please enter an item."
+	         getIname.style.border = "1px solid red";
+	         messageAry.push(InameError);
+             }
+          //if there were errors, display them on the screen
+         if (messageAry.length >= 1){
+	         for (var i=0,  j=messageAry.length; i < j; i++){
+		         var txt = document.createElement(" li ");
+		         txt.innerHTML = messageAry[i];
+		         errorsmessage.appendChild(txt);
+	         }
+         }
+         e.preventDefault();
+            
+     }     
+    var climates = ["Hot", "Raining", "Cold"];
+    //climate();    
+    errorsmessage = $("errors");
+    //sets links and submits
     var displayData = $("Display");
     displayData.addEventListener("click", getData);
     var clearData = $("clear");
     clearData.addEventListener("click", clearLocal);
     var completeChecklist = $("submit");
-    submit.addEventListener("click", storeData);
+    submit.addEventListener("click", validate);
 
 
 
