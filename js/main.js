@@ -129,9 +129,9 @@ window.addEventListener("DOMContentLoaded", function() {
 	    editLink.innerHTML = editText;
 	    linksLi.appendChild(editLink);
 	    
-	    //add line break
+	    //add line break not working
 	    var breakTag = document.createElement("br");
-	    linksLI.appendChild(breakTag);
+	    linksLi.appendChild(breakTag);
 	    
 	     //add a delete single item link
 	    var deleteLink = document.createElement("a");
