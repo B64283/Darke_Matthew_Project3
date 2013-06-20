@@ -15,19 +15,23 @@
 		<title>to do form</title>
     </head>
     <body>
-        <ul id="errors"></ul>
+        
    		<H1>Vacation Planner</H1>
    		<a href="#" id="clear">Clear Data</a>   <a href="#" id="Display">Display Data</a> 
    	               <a href="index.html" id="addNew" style="display:none;">Add New Vacation</a> 
-   		<form action="#" method="post" id= "vacationForm" /> <!-- post submits data behind the scenes -->
+   		<form action="#" method="post" id= "vacationForm"> <!-- post submits data behind the scenes -->
               
             <fieldset>
         	    <legend>Vacation Items</legend>
-        	    <ul>
-        	        <li><label for="Iname">Item name:</label><input type="text" id="Iname" placeholder="Extra Socks" /></li>
-        	    </ul>   
-             
-             	<ul>
+        	    <span>*fields are required.</span>
+        	    <ul id="errors"></ul>
+        	  <ul>
+        	      <li><label for="Iname">Item name:</label><input type="text" id="Iname" placeholder="Extra Socks" /></li>
+        	     
+                  <li><label for="quantity">Length of Vacation<input type="number"
+                  name="quantity" id="quantity" placeholder="7 days"></label></li>
+                                  	
+               <ul>
              	<legend>Check List:</legend>
              		<li><label for="Clothes">Clothes</label><input type= "checkbox"  value="Clothes" id="Clothes"  /></li>   
                     <li><label for="Medication">Medication</label><input type= "checkbox"  value="Medication" id="Medication" /></li>

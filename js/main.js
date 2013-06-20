@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	 	makeOption.innerHTML = optText;
 	 	makeSelect.appendChild(makeOption);
 	 }
-	selectLi.appendChild(makeSelect);   	
+	selectli.appendChild(makeSelect);   	
 }
    //var climatesvalue = ["Hot", "Raining", "Cold"];
    //climate();
@@ -68,8 +68,16 @@ window.addEventListener("DOMContentLoaded", function() {
 	            return false;      
       };
    };
-    function storeData() {
-	    var id           = Math.floor(Math.random()*10000001);
+    function storeData(key) {
+	    //if there is no key, this means this is a new item and needs a new key
+	    if (!key){
+		   var id           = Math.floor(Math.random()*10000001);
+	    }else{
+	     // set id to existing key we"re editing so it will save over the data
+	     // the key is the same key that is passed along from the edit submit event handeler.
+	     // then goes to the validate function and the passed here, into the stor data function
+		    id= key;
+	    }
 	    //gets all form field values and store in object.
 	    //object properties contain array with the form labels and input values.
         getClothesvalue();
@@ -77,6 +85,7 @@ window.addEventListener("DOMContentLoaded", function() {
         getToiletriesvalue()
 	    var item			  = {}; 
 	        item.name         =["Item name:", $( "Iname" ).value];
+	        item.length        =["length of vacation:", $("quantity").value];
 	        item.clothes       =["checkbox Clothes:", Clothesvalue];
 	        item.meds         =["checkbox Medication:", Medicationvalue];
 	        item.toiletries      =["checkbox Toiletries:", Toiletriesvalue];	        
@@ -151,6 +160,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	    
 	    //populate the form fields with current local storage values
 	    $("Iname").value = item.name[1];
+	    $("quantity").value = item.length[1];	    
 	    if (item.clothes[1] == "Clothes"); {
 	        $("Clothes").setAttribute("checked", "checked");
 		}
@@ -191,29 +201,47 @@ window.addEventListener("DOMContentLoaded", function() {
  }
      function validate(e){
 	     //define elemints we want to check
-	     var getIname = $("Iname");	     
+	     var getIname = $("Iname");
+	     var getquantity = $("quantity")	;     
+         
+         //reset error messeages
+         errMsg.innerHTML = " ";
+         getIname.style.border = "1px solid black";
+         getquantity.style.border = "1px solid black";        
+         
          //get error messages
          var messageAry = [];
+         
           //name validation   
-         if (getIname.value === " "){
+         if (getIname.value === ""){
 	         var InameError = "Please enter an item."
 	         getIname.style.border = "1px solid red";
 	         messageAry.push(InameError);
              }
+         if (getquantity.value === ""){
+	         var quantityError = "Please enter numer of days.";    
+              getquantity.style.border = "1px solid red";
+              messageAry.push(quantityError);
+              }
           //if there were errors, display them on the screen
          if (messageAry.length >= 1){
 	         for (var i=0,  j=messageAry.length; i < j; i++){
-		         var txt = document.createElement(" li ");
+		         var txt = document.createElement("li");
 		         txt.innerHTML = messageAry[i];
-		         errorsmessage.appendChild(txt);
+		         errMsg.appendChild(txt);
+	            
 	         }
-         }
-         e.preventDefault();
-            
-     }     
-    var climates = ["Hot", "Raining", "Cold"];
+             e.preventDefault();
+             return false;         
+        } else {
+	        // if its all good!! store data! send the key value (which came from edit Data function).
+	        //remember this key value passed through the editSubmit event listener as a property 
+	        storeData(this.key);
+        }
+    }     
+    //var climates = ["Hot", "Raining", "Cold"];
     //climate();    
-    errorsmessage = $("errors");
+    errMsg = $("errors");
     //sets links and submits
     var displayData = $("Display");
     displayData.addEventListener("click", getData);
@@ -224,7 +252,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 
 
-} );
+ });
 
 
 
