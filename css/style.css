@@ -15,8 +15,8 @@ h1 {
 
 }
 a:link {
-	display: inline
-	font-size:14px ;
+	display: inline;
+	font-size:22px ;
 	font-weight:bold ;
 	text-align:center ;
 	text-decoration: underline ;
@@ -31,7 +31,6 @@ a:link {
 
 legend {
 	font-size: 40;
-	letter-spacing: .0en;
 	color: #0b0585;
 	font-weight: bold;
     border: bold;
@@ -46,9 +45,14 @@ h2,h3 {
 	text-indent: 1px;
 	color: #fafafa
 }
+form fieldset ul input {width: 180px;
+	padding: 5px;
+	margin: 5px;
+	
+}
 li {
 	color: rgba(70,69,69,1);
-	font-size: 18px;
+	font-size: 33px;
 	letter-spacing: normal
 	
 }
@@ -56,9 +60,19 @@ input[type="submit"] {
 	margin: 1px;
 	padding: 46px 0px 0px 0px;
 	text-fill-color: inherit;
+	font-size: larger;
 	background:rgba(12,229,113,0.99);
+	width: 190px;
+	height: 40px;
+	text-align: center;
+}
+.errors {
+	background: #f50707;
+	padding: 10px;
+	font-weight: bold;
+	color: #ff0000
+}
 	
-}	
 label {
 	color: rgba(255,255,255,1);
 	font-family: sans-serif;
@@ -72,8 +86,9 @@ fieldset {
 	}	
 	
 input[type="checkbox"] {
-	 width: ;
-	 background-color: #1b0a8b
+	  background-color: #1b0a8b;
+	 
+	 
 }	
 input[type="text"] {
 	width: 190px;
