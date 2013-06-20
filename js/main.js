@@ -147,7 +147,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	    deleteLink.href = "#";
 	    deleteLink.key = key;
 	    var deleteText = "Delete Vacation";
-	    //deleteLink.addEventListener("click", deleteItem);
+	    deleteLink.addEventListener("click", deleteItem);
 	    deleteLink.innerHTML = deleteText;
 	    linksLi.appendChild(deleteLink);
     }
@@ -187,8 +187,16 @@ window.addEventListener("DOMContentLoaded", function() {
     
     
     }
-    
-    
+    function deleteItem(){
+	    var ask = confirm("Are you sure you want to delete Vacation?");
+	    if (ask){
+	        localStorage.removeItem(this.key);
+	        alert("Vacation was deleted.")
+	        window.location.reload();
+    }else{
+	   alert("Vacation was not deleted.") 
+    }
+  }
     function clearLocal(){
 	    if (localStorage.length === 0){
 		    alert("No Data To Clear.");
